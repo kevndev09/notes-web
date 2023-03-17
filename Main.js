@@ -242,9 +242,4 @@ verCumplidos.addEventListener('click',function(){
         ocultarCumplidos.addEventListener('click',ocultarCumplido)
 })
 
-if (typeof(Storage) !== "undefined") {
-    alert('El almacenamiento local está disponible');
-  } else {
-    alert('El almacenamiento local no está disponible');
-  }
   
