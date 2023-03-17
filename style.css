@@ -1,0 +1,129 @@
+/* CSS variables */
+
+:root {
+    --azulito: #708CD4;
+    --rojito: #EF6D57;
+    --azulito2: #1E3C87;
+    --amarillito: #FAC243;
+}
+
+/* estilos generales de los elementos */
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: all 0.30s;
+}
+
+body {height: 100vh; background-color: rgb(246, 246, 214);}
+
+h3,h2 {color: var(--azulito);}
+
+h5,span {font-family: cursive;}
+
+span {color: var(--rojito);}
+
+ul {list-style: none;}
+
+hr {color: var(--azulito2);}
+
+textarea{
+    background-color: var(--amarillito);
+    color: var(--azulito2); 
+    border: none;
+    resize: none;
+}
+
+label, p, li {cursor: pointer;}
+
+textarea:focus {outline: none;}
+
+label {
+    border: solid 1px var(--rojito);
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.input {
+    width: 80%;
+    border: none;
+    caret-color: var(--azulito2);
+    color: var(--azulito2);
+    background-color: rgb(246, 246, 214);
+ }
+
+.input:focus { outline: none;}
+
+.mensaje {
+     border: 5px solid var(--azulito);
+     height: 200px;
+    }
+
+.mensaje h5 { color: var(--azulito2);}
+
+.evaluarNota{
+    justify-content: space-between;
+}
+
+.añadir {
+    width: 280px;
+}
+#radio, #borrar, .añadir { cursor: pointer;}
+
+#borrar {
+    color: var(--rojito);
+    right: 2%;
+    position: absolute;
+}
+
+#tresPuntos{
+    color: var(--azulito2)
+}
+
+#añadirNota{
+    color: var(--rojito);
+    position: absolute;
+    right: 7%;
+}
+
+#cancelarNota, #AceptarNota{
+    cursor:pointer
+}
+
+#nuevoModal,#modal{
+    width: 255px;
+    height: 255px;
+    background-color: var(--amarillito);
+    box-shadow: 2px 2px 25px var(--azulito);
+    border-radius: 2%;
+    resize: none;
+    overflow-y: hidden;
+}
+
+#añadirNota, #tresPuntos {cursor: pointer;}
+
+.verCumplidos, .ocultarCumplidos{
+    cursor: pointer;
+    color: var(--rojito);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+@media (min-width: 310px) {
+    .input{ width: 80%;}
+
+    .listas { margin-left: auto;}
+
+    #añadirNota{
+        right: 10%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .input{ width: 87%}
+}
+
