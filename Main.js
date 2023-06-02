@@ -107,7 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
     ocultar(ocultarCumplidos)
     
     inicializar()
-})
+}
+)
 
 const DIV = document.querySelector('.cont-objectives')
 
@@ -138,6 +139,7 @@ function crearObjetivo() {
 }
 
 function agregarModal(objetivoActual) {
+  const contModal = document.querySelector('.contModal')
   const target = event && event.target
   if (!objetivoActual) {
     return
@@ -159,7 +161,7 @@ function agregarModal(objetivoActual) {
         <p class="cancelarNota fw-bold">cancelar</p>
       </div>
     </div>`
-  DIV.appendChild(modal)
+  contModal.appendChild(modal)
 
 
   const aceptarNota = modal.querySelector('.aceptarNota');
