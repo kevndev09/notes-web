@@ -103,6 +103,7 @@ label {
     background-color: var(--yellow);
     box-shadow: -1px 5px 25px rgba(0, 0, 0, 0.5); 
     border-radius: 2%;
+    margin: auto;
 }
 
 .modal {
@@ -163,10 +164,6 @@ label {
     .input{ width: 80%;}
 
     .listas { margin-left: auto;}
-
-    Nota{
-        right: 10%;
-    }
 }
 
 @media (min-width: 1400px) {
@@ -178,4 +175,3 @@ label {
         padding-top: 1px;
     }
 }
-
