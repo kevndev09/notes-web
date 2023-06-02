@@ -151,18 +151,17 @@ function agregarModal(objetivoActual) {
   }
 
   const modal = document.createElement('div');
-  modal.className = 'estructuraModal d-flex justify-content-center'
+  modal.className = 'estructuraModal'
   modal.innerHTML = `
     <div>
-      <p class="fw-bold p-1">por qué es importante para ti?</p>
-      <textarea class="textAreaModal" id="escribeTuNota" cols="29" rows="7"></textarea>
-      <div class="d-flex flex-row justify-content-between">
+      <p class="fw-bold text-center">por qué es importante para ti?</p>
+      <textarea class="textAreaModal" id="escribeTuNota" cols="38" rows="7"></textarea>
+      <div class="d-flex flex-row justify-content-around">
         <p class="aceptarNota fw-bold">aceptar</p>
         <p class="cancelarNota fw-bold">cancelar</p>
       </div>
     </div>`
   contModal.appendChild(modal)
-
 
   const aceptarNota = modal.querySelector('.aceptarNota');
   const cancelarNota = modal.querySelector('.cancelarNota');
