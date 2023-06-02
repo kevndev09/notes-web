@@ -1,245 +1,207 @@
-//Invocamos nuestros elementos HTML por su id y class
+const itresPuntos = document.querySelector('#tresPuntos')
+const menu = document.querySelector('.menu')
 
-const DIV = document.querySelector('#Listas')
-const ARTICLE = document.querySelector('#nuevaLista')
-const AÑADIR = document.querySelector('.añadir')
-const BORRAR = document.querySelector('#borrar')
-const RADIO = document.querySelector('#radio')
-const LABEL = document.querySelector('label')
-const tresPuntos = document.querySelector('#tresPuntos')
-const verCumplidos = document.querySelector('.verCumplidos')
-const modal = document.querySelector('#modal')
-const añadirNota = document.querySelector('#añadirNota')
-const cancelarNota = document.querySelector('#cancelarNota')
-const divModal = document.querySelector('.modalContainer')
-
-const objetivosCumplidos = DIV.querySelectorAll('.cumplidos')
-
-let CrearLista = function() {
-    const nuevaLista = ARTICLE.cloneNode(false)
-    const form = document.createElement('form')
-    const input1 = document.createElement('input')
-    const input2 = document.createElement('input')
-    const i = BORRAR.cloneNode(true)
-    const hr = document.createElement('hr')
-    const label = document.createElement('label')
-    const ponTuNota = document.createElement('i')
-    const p = document.createElement('p')
-                                                        //Construyendo un nuevo modal que saldra dinamicamente
-    const nuevoModal = document.createElement('div')
-    const pregunta = document.createElement('p') 
-    const divTextArea = document.createElement('div') 
-    const nuevoTextArea = document.createElement('textarea')
-    const divEvaluarNota = document.createElement('div')
-    const aceptarNuevaNota = document.createElement('p')
-    const cancelarNuevaNota = document.createElement('p')
-    
-    nuevaLista.setAttribute('id', 'nuevaLista')
-    
-form.setAttribute('name', 'inputs')
-
-input1.setAttribute('type', 'radio')
-input1.setAttribute('id', 'radio')
-input1.setAttribute('name', 'inputs')
-input1.className = 'd-none'
-
-input2.setAttribute('type', 'text')
-input2.setAttribute('placeholder', 'Ducharme mas seguido..')
-input2.setAttribute('name', 'inputs')
-input2.className = 'input'
-
-i.className = 'bi bi-trash3-fill ms-2'
-i.setAttribute('id', 'borrar')
-
-ponTuNota.className = 'bi bi-journals'
-ponTuNota.setAttribute('id', 'añadirNota')
-
-nuevoModal.setAttribute('id','nuevoModal')
-
-pregunta.setAttribute('class','p-1')
-pregunta.innerText = 'Quieres añadir una nota?'
-
-divTextArea.setAttribute('class','justify-content-center')
-divTextArea.classList.add('d-flex')
-
-nuevoTextArea.setAttribute('cols', '29')
-nuevoTextArea.setAttribute('rows', '7')
-
-divEvaluarNota.setAttribute('class', 'evaluarNota d-flex')
-
-aceptarNuevaNota.innerText = 'Aceptar'
-aceptarNuevaNota.className = 'fw-bold'
-cancelarNuevaNota.innerText = 'Cancelar'
-cancelarNuevaNota.className = 'fw-bold'
-
-p.setAttribute('id', 'tuNota')
-p.setAttribute('class', 'text-muted')
-
-label.setAttribute('for', 'radio')
-label.className = 'me-2'
-
-nuevaLista.setAttribute('id','nuevaLista')
-
-nuevaLista.appendChild(form)
-nuevaLista.appendChild(label)
-nuevaLista.appendChild(input1)
-nuevaLista.appendChild(input2)
-nuevaLista.appendChild(ponTuNota)
-nuevaLista.appendChild(i)
-nuevaLista.appendChild(p)
-nuevaLista.appendChild(hr)
-
-form.appendChild(input1)
-form.appendChild(label)
-form.appendChild(input2)
-form.appendChild(ponTuNota)
-form.appendChild(i)
-form.appendChild(p)
-
-DIV.appendChild(nuevaLista)
-
-label.addEventListener('click', () => {
-    label.style.backgroundColor = '#EF6D57'
-    if(nuevaLista.className === 'cumplidos d-block'){
-    } else{
-    setTimeout(function(){
-        nuevaLista.className = 'cumplidos d-none'
-    },1310)
+itresPuntos.addEventListener('click', () => {
+  if (menu.className === 'd-none') {
+    menu.classList.replace('d-none', 'd-flex')
+    menu.classList.add('flex-row', 'gap-3')
+}else {
+    menu.className = 'd-none'
 }
 })
 
-    i.addEventListener('click', () => {
-        DIV.removeChild(nuevaLista)
-    })
-    
-    function mostrarCumplidos(){
-        if(nuevaLista.className === 'cumplidos d-none'){
-            nuevaLista.className = 'cumplidos d-block'
-            } 
+let borrar
+let ocultarCumplidos
+let mostrarCumplidos
 
-        if(ocultarCumplidos.className === 'ocultarCumplidos d-none'){
-            ocultarCumplidos.className = 'ocultarCumplidos d-block'
-        }
-        function ocultarCumplidoss(){
-            if (nuevaLista.className === 'cumplidos d-block'){
-                nuevaLista.className = 'cumplidos d-none'
-                console.log('Lista ocultada');
-            } 
-        }
-        ocultarCumplidos.addEventListener('click',ocultarCumplidoss)
-    }
-
-        //
-        if (nuevaLista.className === 'cumplidos d-none') {
-            nuevaLista.classList.replace('d-none','d-block')
-        }
-
-verCumplidos.addEventListener('click',mostrarCumplidos)
-
-
-    ponTuNota.addEventListener('click', () => {
-
-        console.log('nota añadida');
-        
-        nuevoModal.appendChild(pregunta)
-        nuevoModal.appendChild(divTextArea)
-        divTextArea.appendChild(nuevoTextArea)
-        nuevoModal.appendChild(divEvaluarNota)
-        divEvaluarNota.appendChild(cancelarNuevaNota)
-        divEvaluarNota.appendChild(aceptarNuevaNota)
-            console.log(nuevoModal);
-            nuevoModal.classList.replace('d-none','d-block')
-        divModal.appendChild(nuevoModal)
-        
-        window.scroll(500,2000)
-    })
-
-    aceptarNuevaNota.addEventListener('click',function(){
-    nuevoModal.classList.add('d-none')
-
-    ponTuNota.className = 'bi bi-journal-check'
-    
-    let nuevaNota = nuevoTextArea.value
-    p.innerHTML = nuevaNota
-})
-
-cancelarNuevaNota.addEventListener('click',function(){
-    nuevoModal.className = 'd-none'
-})
-}
-
-AÑADIR.addEventListener('click', CrearLista)
-
-//Estos listeners se ejecutaran sin importar si se crea o no una nueva lista
-
-BORRAR.addEventListener('click', () => {
-    DIV.removeChild(ARTICLE)
-})
-
-LABEL.addEventListener('click', () => {
-LABEL.style.backgroundColor = '#EF6D57'
-    if(ARTICLE.className === 'cumplidos d-block'){
-        console.log('desabilitado');
-    } else{
-    setTimeout(function(){
-        ARTICLE.className = 'cumplidos d-none'
-    },1310)
-}
-})
-
-const DIV2 = document.querySelector('#cont-trespuntos')
-const ocultarCumplidos = document.querySelector('.ocultarCumplidos')
-const ul = document.querySelector('ul')
-
-function mostrarMenu() {
-    if (ul.className === 'd-none') {
-        ul.classList.replace('d-none', 'd-flex')
-        ul.classList.add('flex-row', 'gap-3')
-    }else {
-        ul.className = 'd-none'
-    }
-}
-
-añadirNota.addEventListener('click', function(){
-
-    modal.classList.replace('d-none','d-block')
-    window.scroll(500,3000)
-})
-
-const escribeTuNota = document.querySelector('#escribeTuNota')
-const AceptarNota = document.querySelector('#AceptarNota')
-const tuNota = document.querySelector('#tuNota')
-
-AceptarNota.addEventListener('click', function() {
-
-    modal.classList.replace('d-block', 'd-none')
-
-    añadirNota.className = 'bi bi-journal-check'
-
-    let nota = escribeTuNota.value
-        tuNota.innerHTML = nota
-})
-
-cancelarNota.addEventListener('click', () => {
-
-    modal.classList.replace('d-block', 'd-none')
-})
-
-verCumplidos.addEventListener('click',function(){
-    if(ARTICLE.className === 'cumplidos d-none'){
-            ARTICLE.className = 'cumplidos d-block'
-            } 
-
-        if(ocultarCumplidos.className === 'ocultarCumplidos d-none'){
-            ocultarCumplidos.className = 'ocultarCumplidos d-block'
-        }
-
-        function ocultarCumplido(){
-            if (nuevaLista.className === 'cumplidos d-block'){
-                nuevaLista.className = 'cumplidos d-none'
-            } 
-        }
-        ocultarCumplidos.addEventListener('click',ocultarCumplido)
-})
-
+function inicializar(nuevoObjetivo){
   
+  const objetivos = document.querySelectorAll('.objetivo')
+  mostrarCumplidos = document.querySelector('.mostrarCumplidos')
+  const ocultarEliminados = document.querySelector('.ocultarEliminados')
+  
+  objetivos.forEach((objetivo) => {
+    const añadirNotaIcono = objetivo.querySelector('.añadirNota')
+    añadirNotaIcono.addEventListener('click', () => {
+      agregarModal(objetivo)
+      window.scroll(500,2000)
+    })
+  })
+
+    const inputDefault = document.querySelector('.objetivo #radio')
+
+    inputDefault.addEventListener("mouseenter", () => {
+      inputDefault.focus()
+    })
+
+    inputDefault.addEventListener("mouseleave", () => {
+      inputDefault.blur()
+    })
+
+    const AÑADIR = document.querySelector('.añadir')
+
+AÑADIR.addEventListener('click',()=>{
+  crearObjetivo()
+  window.scroll(500,2000)
+})
+
+mostrarCumplidos.addEventListener('click', () => {
+  cambiarEstado()
+})
+
+}
+
+function mostrarObjetivosCumplidos(){
+  const chekeadosOcultos = document.querySelectorAll('.checkeado')
+  chekeadosOcultos.forEach((obj)=>{
+  obj.classList.remove('d-none')
+  obj.classList.add('d-block')
+  })
+  console.log('se mostro')
+}
+function cambiarEstado(){
+  if(mostrarCumplidos.innerHTML === 'ver cumplidos'){
+    mostrarCumplidos.innerHTML = 'ocultar'
+    mostrarCumplidos.className = 'ocultarCumplidos'
+    ocultarCumplidos = document.querySelector('.ocultarCumlidos')
+    ocultar(ocultarCumplidos)
+    mostrarObjetivosCumplidos()
+  }else{
+    mostrarCumplidos.innerHTML = 'ver cumplidos'
+    mostrarCumplidos.className = 'mostrarCumplidos'
+    ocultarObjetivosCumplidos()
+  }
+}
+
+function ocultar(ocultarCumplidos){
+  if(ocultarCumplidos){
+   ocultarCumplidos.addEventListener('click', () => {
+    ocultarObjetivosCumplidos()
+   })
+  }
+}
+
+function ocultarObjetivosCumplidos(){
+    const cumplidos = document.querySelectorAll('.checkeado')
+    cumplidos.forEach((obj)=>{
+      obj.classList.remove('d-block')
+      obj.classList.add('d-none')
+    })
+    console.log('se ocultaron los cumplidos');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const objetivos = document.querySelectorAll('.objetivo');
+
+    objetivos.forEach(inputTxt => {
+      inputTxt.addEventListener("mouseover", () => {
+        inputTxt.focus()
+      })
+    
+      inputTxt.addEventListener("mouseout", () => {
+        inputTxt.blur()
+      })
+    })
+
+    ocultarCumplidos = document.querySelector('.ocultarCumplidos')
+    ocultar(ocultarCumplidos)
+    
+    inicializar()
+})
+
+const DIV = document.querySelector('.cont-objectives')
+
+function crearObjetivo() {
+  const nuevoObjetivo = document.createElement('article')
+  nuevoObjetivo.setAttribute('class', 'objetivo')
+
+  nuevoObjetivo.innerHTML = `
+    <form name="inputs">
+      <input class="d-none" type="radio" name="inputs">
+      <label for="radio" class="check"></label>
+      <input class="input" type="text" id="radio"
+      placeholder="...!" name="inputs">
+      <i class="bi bi-journals añadirNota"></i>
+      <i class="bi bi-trash3-fill borrar" onclick="borrarObjetivo(this.closest('.objetivo'))"></i>
+    </form>
+    <p class="tuNota text-muted"></p>
+    <hr>
+  </article>
+  `
+  DIV.appendChild(nuevoObjetivo)
+  
+  const iconoAñadirNota = nuevoObjetivo.querySelector('.añadirNota')
+  iconoAñadirNota.addEventListener('click', () => {
+    agregarModal(nuevoObjetivo)
+  window.scroll(500,2000)
+  })
+}
+
+function agregarModal(objetivoActual) {
+  const target = event && event.target
+  if (!objetivoActual) {
+    return
+  }
+
+  console.log('escribe tu nota...');
+  if (document.querySelector('.estructuraModal')) {
+    return
+  }
+
+  const modal = document.createElement('div');
+  modal.className = 'estructuraModal d-flex justify-content-center'
+  modal.innerHTML = `
+    <div>
+      <p class="fw-bold p-1">por qué es importante para ti?</p>
+      <textarea class="textAreaModal" id="escribeTuNota" cols="29" rows="7"></textarea>
+      <div class="d-flex flex-row justify-content-between">
+        <p class="aceptarNota fw-bold">aceptar</p>
+        <p class="cancelarNota fw-bold">cancelar</p>
+      </div>
+    </div>`
+  DIV.appendChild(modal)
+
+
+  const aceptarNota = modal.querySelector('.aceptarNota');
+  const cancelarNota = modal.querySelector('.cancelarNota');
+
+  aceptarNota.addEventListener('click', () => {
+    const objetivo = objetivoActual
+    if (objetivo) {
+      const añadirNotaElement = objetivo.querySelector('.añadirNota');
+      añadirNotaElement.classList.replace('bi-journals', 'bi-journal-check');
+      modal.className = 'd-none'
+      const textArea = modal.querySelector('.textAreaModal');
+      const tuNota = añadirNotaElement.parentElement.nextElementSibling;
+      tuNota.textContent = textArea.value
+      console.log('nota aceptada')
+    }
+  }, { once: true });
+
+  cancelarNota.addEventListener('click', () => {
+    modal.className = 'd-none'
+    console.log('nota cancelada')
+  }, { once: true })
+}
+
+function borrarObjetivo(objetivo) {
+    objetivo.className = 'eliminado d-none'
+      console.log('eliminado');
+  }
+
+  document.addEventListener('click', function(event) {
+    if (event.target.matches('.check')) {
+      checkearObjetivo(event.target);
+    }
+  })
+
+  function checkearObjetivo(label) {
+    const objetivo = label.closest('.objetivo')
+      console.log('check');
+    if(objetivo !== null){
+        label.style.backgroundColor = '#6DAFA7'
+        setTimeout(()=>{
+            objetivo.className = 'checkeado d-none'
+        },1000)
+  }
+}

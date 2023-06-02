@@ -12,73 +12,52 @@
     <title>Doc</title>
 </head>
 <body>
-
-    <div class="container-fluid d-flex flex-row mb-1" id="cont-trespuntos">
-        <i class="bi bi-three-dots" id="tresPuntos"
-        onclick="mostrarMenu()"></i>
-
-        <ul class="d-none">
-            <li class="verCumplidos">Ver cumplidos</li>
-            <li class="ocultarCumplidos d-none">ocultar</li>
-        </ul>
-    </div>
-    
-    <div class="container position-relative" id="Listas">
+    <article class="cont-objectives position-relative">
         
-        <div class="image-cont d-flex justify-content-center align-items-center text-center">
-            <img  class="d-none d-lg-block" src="toDo.png" alt="toDo.png" width="300px" height="550px">
-            <div class="mensaje rounded text-center px-3 d-none d-lg-block ms-0 ms-md-5">
-                <h5 class=" my-5 mx-5">Puedes añadir dinamicamente tus objetivos,
+        <picture class="image-cont d-flex justify-content-center align-items-center">
+            <img class="img1 d-none d-md-block" src="multitasking.png" alt="img" width="720px" height="500px">
+        </picture>
+
+            <div class="rounded text-center px-3 py-5 d-none d-md-block ms-0 ms-md-5">
+                <h5 class="fs-3">Puedes añadir dinamicamente tus objetivos,
                      <br> borrarlos o tacharlos que seria cuando los cumplas <br> 
-                y recuerda <span>¡NO TE RINDAS!</span> </h5>
+                y recuerda <span>¡NO TE RINDAS!</span></h5>
             </div>
+
+        <div class="container-fluid d-flex flex-row mb-1" id="cont-tres-puntos">
+            <i class="bi bi-three-dots" id="tresPuntos"></i>
+    
+            <ul class="menu d-none">
+                <li class="mostrarCumplidos">ver cumplidos</li>
+            </ul>
         </div>
             <h2 class="text-center m-5 fw-bold">Tus objetivos</h2>
-
         <hr>
-        <article id="nuevaLista">
+        <article class="objetivo">
             <form name="inputs">
                 <input class="d-none" type="radio" name="inputs" id="radio">
-                <label for="radio px-3"></label>
-                <input class="input" type="text" id="text"
-                placeholder="Ducharme mas seguido..." name="inputs">
-                <i class="bi bi-journals" id="añadirNota"></i>
-                <i class="bi bi-trash3-fill" id="borrar"></i>
+                <label for="radio" class="check"></label>
+                <input class="input" type="text" id="radio"
+                placeholder="...!" name="inputs">
+                <i class="bi-journals añadirNota"></i>
+                <i class="bi-trash3-fill borrar" onclick="borrarObjetivo(this.closest('.objetivo'))"></i>
             </form>
-            <p id="tuNota" class="text-muted"></p>
+            <p class="tuNota text-muted"></p>
             <hr>
-        </div>
+        </article>
         </article>
             
-        <div class="modalContainer d-flex justify-content-center">
-            <div class="d-none" id="modal">
-                <p class="p-1">Quieres añadir una nota?</p>
-                <div class="body-modal d-flex justify-content-center">
-                    <textarea name="" id="escribeTuNota" cols="29" rows="7"></textarea>
-                </div>
-            <div class="evaluarNota d-flex">
-                <p id="cancelarNota" class="px-1">
-                    <strong>Cancelar</strong>
-                </p>
-                <p id="AceptarNota" class="px-1">
-                    <strong>Aceptar</strong>
-                </p>
-                </div>
-            </div>
-        </div>
     
     <h3 class="añadir mt-5 text-center fw-bold">
         <i class="bi bi-journal-plus"></i>
         Nuevo objetivo
-    </h3>
+    </h3>    
     
-    <p id="mostrarCumplidos"></p>
-    
-</body>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    <script src="Main.js"></script>
+
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-
-    <script src="Main.js"></script>
+</body>
 </html>

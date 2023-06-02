@@ -1,13 +1,9 @@
-/* CSS variables */
 
 :root {
-    --azulito: #708CD4;
-    --rojito: #EF6D57;
-    --azulito2: #1E3C87;
-    --amarillito: #FAC243;
+    --red: #F4C2C9;
+    --yellow: #FFE779;
+    --green: #6DAFA7;
 }
-
-/* estilos generales de los elementos */
 
 * {
     box-sizing: border-box;
@@ -16,13 +12,15 @@
     transition: all 0.30s;
 }
 
-body {height: 100vh; background-color: rgb(246, 246, 214);}
+body {height: 100vh; background-color: whitesmoke;}
 
-h3,h2 {color: var(--azulito);}
+h3,h2 {color: var(--green);}
 
 h5,span {font-family: cursive;}
 
-span {color: var(--rojito);}
+span {color: var(--red);}
+
+span:hover{ color: var(--green);}
 
 ul {list-style: none;}
 
@@ -40,7 +38,7 @@ label, p, li {cursor: pointer;}
 textarea:focus {outline: none;}
 
 label {
-    border: solid 1px var(--rojito);
+    border: solid 1px var(--green);
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -50,64 +48,113 @@ label {
 .input {
     width: 80%;
     border: none;
-    caret-color: var(--azulito2);
-    color: var(--azulito2);
-    background-color: rgb(246, 246, 214);
+    caret-color: var(--green);
+    color: #000;
+    background-color: whitesmoke;
  }
 
-.input:focus { outline: none;}
+ .input::placeholder{
+    color: var(--red);
+ }
 
-.mensaje {
-     border: 5px solid var(--azulito);
-     height: 200px;
-    }
-
-.mensaje h5 { color: var(--azulito2);}
+.input:focus {outline: none;}
 
 .evaluarNota{
     justify-content: space-between;
 }
 
 .añadir {
-    width: 280px;
+   width: 280px;
 }
-#radio, #borrar, .añadir { cursor: pointer;}
 
-#borrar {
-    color: var(--rojito);
+#radio, .borrar, .añadir { cursor: pointer;}
+
+.borrar {
+    color: var(--green);
     right: 2%;
     position: absolute;
 }
 
 #tresPuntos{
-    color: var(--azulito2)
+    color: black;
 }
 
-#añadirNota{
-    color: var(--rojito);
+#cont-tres-puntos{
+    padding-top: 50px;
+}
+
+.añadirNota{
+    color: var(--green);
     position: absolute;
-    right: 7%;
+    right: 9%;
 }
 
 #cancelarNota, #AceptarNota{
     cursor:pointer
 }
 
-#nuevoModal,#modal{
-    width: 255px;
-    height: 255px;
-    background-color: var(--amarillito);
-    box-shadow: 2px 2px 25px var(--azulito);
-    border-radius: 2%;
-    resize: none;
-    overflow-y: hidden;
+#tuNota{
+    word-wrap: break-word;
 }
 
-#añadirNota, #tresPuntos {cursor: pointer;}
+.estructuraModal{
+    width: 255px;
+    height: 255px;
+    background-color: var(--yellow);
+    box-shadow: -1px 5px 25px rgba(0, 0, 0, 0.5); 
+    border-radius: 2%;
+    margin: auto;
+}
 
-.verCumplidos, .ocultarCumplidos{
+.modal {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--red);
+    padding: 1rem;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .textAreaModal {
+    background-color: var(--yelllow);
+    resize: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: '';
+    caret-color: transparent;
+  }
+
+  .textAreaModal:hover{
+    caret-color: #1E3C87;
+  }
+
+  .evaluarNota hr {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .evaluarNota {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .evaluarNota span {
+    font-size: 1rem;
+  }
+  
+.añadirNota, #tresPuntos{ cursor: pointer; }
+
+.mostrarCumplidos, .ocultarCumplidos, .verEliminados{
     cursor: pointer;
-    color: var(--rojito);
+    color: var(--green);
     font-size: 1rem;
     font-weight: bold;
 }
@@ -118,12 +165,18 @@ label {
 
     .listas { margin-left: auto;}
 
-    #añadirNota{
+    Nota{
         right: 10%;
     }
 }
 
 @media (min-width: 1400px) {
     .input{ width: 87%}
+}
+
+@media (width <= 768px){
+    #cont-tres-puntos{
+        padding-top: 1px;
+    }
 }
 
